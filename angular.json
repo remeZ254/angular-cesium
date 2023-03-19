@@ -13,7 +13,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "aot": true,
             "outputPath": "dist/angular-cesium-demo",
             "index": "projects/demo/src/index.html",
             "main": "projects/demo/src/main.ts",
@@ -39,7 +38,13 @@
             "allowedCommonJsDependencies": [
               "geodesy",
               "util"
-            ]
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -53,7 +58,6 @@
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -69,7 +73,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -101,13 +106,6 @@
             ],
             "assets": ["projects/demo/src/favicon.ico", "projects/demo/src/assets"]
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["projects/demo/tsconfig.app.json", "projects/demo/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
-          }
         }
       }
     },
@@ -126,13 +124,6 @@
             "production": {
               "devServerTarget": "angular-cesium-demo:serve:production"
             }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -162,16 +153,6 @@
             "tsConfig": "projects/angular-cesium/tsconfig.spec.json",
             "karmaConfig": "projects/angular-cesium/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/angular-cesium/tsconfig.lib.json",
-              "projects/angular-cesium/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
         }
       }
     },
@@ -194,7 +175,6 @@
             "main": "projects/landing-page/src/main.ts",
             "polyfills": "projects/landing-page/src/polyfills.ts",
             "tsConfig": "projects/landing-page/tsconfig.app.json",
-              "aot": true,
             "assets": [
               "projects/landing-page/src/favicon.ico",
               "projects/landing-page/src/assets",
@@ -208,7 +188,13 @@
               "projects/landing-page/src/styles.scss",
               "./node_modules/cesium/Build/Cesium/Widgets/widgets.css"
             ],
-            "scripts": ["./node_modules/cesium/Build/Cesium/Cesium.js"]
+            "scripts": ["./node_modules/cesium/Build/Cesium/Cesium.js"],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -238,7 +224,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -272,19 +259,6 @@
               "projects/landing-page/src/styles.scss"
             ],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/landing-page/tsconfig.app.json",
-              "projects/landing-page/tsconfig.spec.json",
-              "projects/landing-page/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {
